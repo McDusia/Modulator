@@ -45,13 +45,24 @@ object ChordBuilder {
 
   def distance(x: Integer, y: Integer) = {
     val a = (y - x)%12
-    if(a <= 6) a
-    else {if (a>0) a - 12
-    else 12 + a
+    if(a > 0) {
+      //skok w górę
+      if (a <= 6) a
+      else a - 12
+    }
+    else {
+      //skok w dół
+      if (a >= -6) a
+      else a + 12
     }
   }
 
   def findMinimalChange(rest: Array[Integer], restTonic: Array[Integer], size: Integer, minus: Boolean) = {
+    println("reszta akordu docelowego:")
+    printTab(rest,3)
+    println("reszta toniki:")
+    printTab(restTonic,3)
+
     if(size != 3) println("error in findMinimalChange")  //wyczyścić
     //------for each note in rest count distances from notes in restTonic:
     val dist0 = new Array[Integer](3)
@@ -60,9 +71,13 @@ object ChordBuilder {
 
     //distX - distances X note from notes in restTonic(rest notes from tonic chord)
     for(i <- 0 to 2) {
-      dist0(i) = distance(rest(0),restTonic(i))
-      dist1(i) = distance(rest(1),restTonic(i))
-      dist2(i) = distance(rest(2),restTonic(i))
+
+      dist0(i) = distance(restTonic(0),rest(i))
+      println("distancesFor0["+i+"]: "+dist0(i))
+      dist1(i) = distance(restTonic(1),rest(i))
+      println("distancesFor1["+i+"]: "+dist1(i))
+      dist2(i) = distance(restTonic(2),rest(i))
+      println("distancesFor2["+i+"]: "+dist2(i))
     }
 
    var min = 36
@@ -72,7 +87,7 @@ object ChordBuilder {
     //if(j!=i) , ; if(k!=i && k!=j)
     for(i <- 0 to 2; j<- 0 to 2;  if(j!=i); k<- 0 to 2; if(k!=i && k!=j)) {
       val t = abs(dist0(i)) + abs(dist1(j)) + abs(dist2(k))
-      println("testujemy"+t+ dist0(i)+dist1(i)+dist2(i))
+      println("testujemy "+t+ "    "+ dist0(i)+"_"+dist1(j)+"_"+dist2(k))
 
       if((t < min) && !(minus && dist0(i)<0 && dist1(j)<0 && dist2(k)<0) && !(!minus && dist0(i)>0 && dist1(j)>0 && dist2(k)>0)) {
         min = t
@@ -94,18 +109,19 @@ object ChordBuilder {
     println("***************** In modChord1 *******************")
     printTab(tonic,4)
     val seventhPitch = source + 11
-    val ninth = destination + 20
+    val ninthPith = destination + 20
 
     //zbuduj 4 dźwięki od 7 stopnia tonacji wyjściowej
-    println("ninth " + ninth)
+    println("ninth " + ninthPith)
     val tab = new Array [Integer](4)
 
+    //obliczenie dźwięków z drugiego akordu
     for(i <- 0 to 3) {tab(i) = seventhPitch + 3 * i; println("tab(i): " + tab(i)) }
 
     var index = 0
     //znajdz wśród nich dzwiek z tonacji docelowej
     for(i <- 0 to 3)
-      if(abs(tab(i)-ninth) % 12 == 0)
+      if(abs(tab(i)-ninthPith) % 12 == 0)
       {
         println("note from source key in destination key: " + tab(i))
         index = i
@@ -125,6 +141,7 @@ object ChordBuilder {
     val mini = findMinimalChange(rest,restTonic,rest.length, minus)
 
     println("STOP")
+    printTab(mini,3)
     //-----------------------------------------
     /*val mini = new Array [Integer](3)
     mini(0) = min(distance(tonic(1),rest(0)),distance(tonic(1),rest(1)), distance(tonic(1),rest(2)))
@@ -137,6 +154,9 @@ object ChordBuilder {
     mini(2) = min(distance(tonic(3),rest(0)),distance(tonic(3),rest(1)), distance(tonic(3),rest(2)))
     println("min2 " + mini(2))
     */
+
+    println("tonika:")
+    printTab(tonic,4)
     result(1) = tonic(1) + mini(0)
     result(2) = tonic(2) + mini(1)
     result(3) = tonic(3) + mini(2)
@@ -195,6 +215,8 @@ object ChordBuilder {
     val array = tonic(major,source)
     val array1 = modChord1(source,destination,array)
 
+    println("EYGSUDFJGS: ")
+    printTab(array1,4)
     val tmp = new Array [Integer] (4)
     for(i <- 0 to 3) tmp(i) = array1(i)
 

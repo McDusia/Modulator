@@ -7,7 +7,7 @@ object scala{
 
   def main(args: Array[String]) {
 
-    val path = "C:\\Users\\Madzia\\midi2\\test.mid"
+    val path = "C:\\Users\\Madzia\\Modulator\\test.mid"
     //------setting tempo------------
     implicit val rate = TickRate.tempo(bpm = 120, tpq = 512)
 
@@ -24,7 +24,8 @@ object scala{
 
     val debug = ChordBuilder.minJumps(1,2,1)
     println("**************TEST******   " )
-    //val t = ChordBuilder.printTab(debug,debug.size)
+    val t = ChordBuilder.printTab(debug,debug.size)
+    //val t2 = ChordBuilder.distance(44,)
     //val t1 = ChordBuilder.findMinimalChange(Array(36,41,47),Array(42,38,46),3)
 
     val sq = ChordBuilder.buildSequence(LetterToSound.isMajor(source), LetterToSound.isMajor(destination),sNr,dNr)
