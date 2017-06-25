@@ -164,7 +164,6 @@ object ChordBuilder {
 
   def cadenceChord1(majorDestination: Boolean, array: Array[Integer], destination: Integer) = {
     //nowa pryma akordu
-
     array(0) = array(0) + distance(array(0),destination+5)
     println("nowa pryma: "+ array(0))
     //znalezienie 2 tercji akordu, 2 dźwięki takie same
@@ -206,9 +205,52 @@ object ChordBuilder {
     array
   }
 
-  def cadenceChord2(array: Array[Integer]) = {
+  def cadenceChord2(majorDestination: Boolean,array: Array[Integer]) = {
 
+      for(i<-0 to 3)
+      {
+        if(distance(array(0)+7, array(i))==0) {
+          //nic
+        }
+
+        if(distance(array(0)+3, array(i))==0) {
+          array(i) -= 1
+        }
+        if(distance(array(0)+9, array(i))==0) {
+          if(majorDestination) array(i) += 2
+          else array(i) += 1
+        }
+      }
+    array(0) += 2
+      array
   }
+
+  def cadenceChord3(majorDestination: Boolean,array: Array[Integer]) = {
+
+    for(i<-0 to 3)
+    {
+      if(distance(array(0), array(i))==0) {
+        array(i) += 2
+      }
+      if(majorDestination) {
+        if (distance(array(0) + 9, array(i)) == 0) {
+          array(i) -= 2
+        }
+      }
+      else {
+        if (distance(array(0) + 8, array(i)) == 0) {
+          array(i) -= 1
+        }
+      }
+
+      if(distance(array(0) + 5, array(i))==0) {
+        //nic
+      }
+    }
+    array(0) -= 1
+    array
+  }
+
   def printTab(array: Array[Integer], size: Integer) = {
     println("------------------")
     for (i <- 0 to (size-1)) println("elem(" + i + ")" + array(i))
@@ -253,7 +295,7 @@ object ChordBuilder {
     result
   }
 
-  def buildSequence(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
+  def buildSequenceForFirstType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
     val boxForTonic = tonic(major,source)
     val boxForFirstChord = modulationChord1(source,destination,boxForTonic)
 
@@ -261,12 +303,19 @@ object ChordBuilder {
     printTab(boxForFirstChord,4)
     //przepisanie akordu do nowej tablicy
     val tmp = new Array [Integer] (4)
+    val tmp2 = new Array [Integer] (4)
+    val tmp3 = new Array [Integer] (4)
     for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
 
     val array3 = modulationChord2(majorDestination,tmp)
     //4 akord
     for(i <- 0 to 3) tmp(i) = array3(i)
     val array4 = cadenceChord1(majorDestination,tmp,destination)
+    for(i <- 0 to 3) tmp2(i) = array4(i)
+    val array5 = cadenceChord2(majorDestination,tmp2)
+
+    for(i <- 0 to 3) tmp3(i) = array5(i)
+    val array6 = cadenceChord3(majorDestination,tmp3)
 
     println("TEST")
     println("TONIKA")
@@ -280,8 +329,11 @@ object ChordBuilder {
       buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
       buildVector(boxForFirstChord(0)-1,boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
       buildVector(array3(0),array3(1),array3(2),array3(3)) ++
-      buildVector(array4(0),array4(1),array4(2),array4(3))
-
+      buildVector(array4(0),array4(1),array4(2),array4(3)) ++
+      buildVector(array4(0)+1,array4(1),array4(2),array4(3)) ++
+      buildVector(array5(0),array5(1),array5(2),array5(3)) ++
+      buildVector(array6(0),array6(1),array6(2),array6(3))
   }
+
 
 }
