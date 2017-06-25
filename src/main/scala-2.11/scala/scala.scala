@@ -28,8 +28,8 @@ object scala{
     //val t2 = ChordBuilder.distance(44,)
     //val t1 = ChordBuilder.findMinimalChange(Array(36,41,47),Array(42,38,46),3)
 
-    val sq = ChordBuilder.buildSequenceForFirstType(LetterToSound.isMajor(source), LetterToSound.isMajor(destination),sNr,dNr)
-
+    //val sq = ChordBuilder.buildSequenceForFirstType(LetterToSound.isMajor(source), LetterToSound.isMajor(destination),sNr,dNr)
+    val sq = ChordBuilder.buildSequenceForSecondType(LetterToSound.isMajor(source), LetterToSound.isMajor(destination),sNr,dNr)
     println("mod 1 type test "+ sq)
     val c1 = sq.zipWithIndex.map{case (m,i) => Event((i*rate.value).toLong, m) }
     val c2 = Track(c1)

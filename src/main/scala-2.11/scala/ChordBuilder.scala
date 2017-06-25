@@ -1,7 +1,7 @@
 package scala
 
 import de.sciss.midi.{NoteOff, NoteOn}
-
+import Type.ModulationType
 
 object ChordBuilder {
 
@@ -105,13 +105,15 @@ object ChordBuilder {
     a
   }
 
-  def modulationChord1(source:Integer, destination:Integer, tonic: Array[Integer]) = {
+  def modulationChord1(t: Type.ModulationType.ModulationType ,source:Integer, destination:Integer, tonic: Array[Integer]) = {
 
     println("***************** In modChord1 *******************")
     printTab(tonic,4)
     val seventhPitch = source + 11 //tzw. septyma tonacji źródłowej
     val ninthPith = destination + 20  //tzw. nona tonacji docelowej
 
+    val primePith = destination + 6
+    val dominantsPrime = destination + 7
     //zbuduj 4 dźwięki od 7 stopnia tonacji wyjściowej
     println("ninth " + ninthPith)
     val tab = new Array [Integer](4)
@@ -121,12 +123,28 @@ object ChordBuilder {
 
     var index = 0
     //znajdz wśród nich dźwiek z tonacji docelowej
-    for(i <- 0 to 3)
-      if(abs(tab(i)-ninthPith) % 12 == 0)
-      {
-        println("note from source key in destination key: " + tab(i))
-        index = i
-      }
+    if(t == ModulationType.First) {
+      for (i <- 0 to 3)
+        if (abs(tab(i) - ninthPith) % 12 == 0) {
+          println("note from source key in destination key: " + tab(i))
+          index = i
+        }
+    }
+    if(t == ModulationType.Second) {
+      for (i <- 0 to 3)
+        if (abs(tab(i) - primePith) % 12 == 0) {
+          println("note from source key in destination key: " + tab(i))
+          index = i
+        }
+    }
+    if(t == ModulationType.Third) {
+      for (i <- 0 to 3)
+        if (abs(tab(i) - dominantsPrime) % 12 == 0) {
+          println("note from source key in destination key: " + tab(i))
+          index = i
+        }
+    }
+
     //--------------------------
     //tablica na gotowy akord
     val result = new Array [Integer](4)
@@ -207,7 +225,7 @@ object ChordBuilder {
 
   def cadenceChord2(majorDestination: Boolean,array: Array[Integer]) = {
 
-      for(i<-0 to 3)
+      for(i<-1 to 3)
       {
         if(distance(array(0)+7, array(i))==0) {
           //nic
@@ -227,7 +245,10 @@ object ChordBuilder {
 
   def cadenceChord3(majorDestination: Boolean,array: Array[Integer]) = {
 
-    for(i<-0 to 3)
+    println("in cadenceCHORD &&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+
+    for(i<-1 to 3)
     {
       if(distance(array(0), array(i))==0) {
         array(i) += 2
@@ -248,8 +269,166 @@ object ChordBuilder {
       }
     }
     array(0) -= 1
+    println("poz mainachu%%%%%%%%%%%%%%%%%%")
+    printTab(array,4)
     array
   }
+
+  def cadenceChord4(majorDestination: Boolean,array: Array[Integer]) = {
+
+    println("in cadenceCHORD4&&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+
+    for(i<-1 to 3)
+    {
+      //if(majorDestination) {
+        if (distance(array(0) + 6, array(i)) == 0) {
+          array(i) -= 1
+        }
+      //}
+      //else {
+        if (distance(array(0) + 3, array(i)) == 0) {
+          array(i) -= 4
+        }
+      //}
+
+      if(distance(array(0) + 8, array(i))==0) {
+        //nic
+      }
+    }
+    array(0) += 1
+    println("poz mainachu%%%%%%%%%%%%%%%%%%")
+    printTab(array,4)
+    array
+  }
+
+  def cadenceChord5(majorDestination: Boolean,array: Array[Integer]) = {
+
+    println("in cadenceCHORD4&&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+
+
+    for (i <- 1 to 3) {
+      //if(majorDestination) {
+      if (distance(array(0) + 7, array(i)) == 0) {
+        array(i) -= 2
+      }
+      //}
+      //else {
+      if (distance(array(0) + 10, array(i)) == 0) {
+        if(majorDestination) array(i) -=1
+        else array(i) -= 2
+      }
+      //}
+
+      if (distance(array(0) + 4, array(i)) == 0) {
+        array(i) +=1
+      }
+    }
+
+    array(0) -= 7
+    println("poz mainachu%%%%%%%%%%%%%%%%%%")
+    printTab(array,4)
+    array
+  }
+
+  def trzeciakord2typ(majorDestination: Boolean,array: Array[Integer]) = {
+
+    println("in cadenceCHORD4&&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+
+
+    for (i <- 1 to 3) {
+
+        if (distance(array(0) + 9, array(i)) == 0) {
+          if(majorDestination)
+            array(i) += 1
+        }
+
+      //}
+      //else {
+      if (distance(array(0) + 6, array(i)) == 0) {
+        //if(majorDestination) array(i) -=1
+        //else array(i) -= 2
+      }
+      //}
+
+      if (distance(array(0) + 3, array(i)) == 0) {
+        array(i) -= 2
+      }
+    }
+
+    array(0) += 1
+    println("poz mainachu%%%%%%%%%%%%%%%%%%")
+    printTab(array,4)
+    array
+  }
+
+  def czwartyakord2typ(majorDestination: Boolean,array: Array[Integer]) = {
+
+    println("in cadenceCHORD4&&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+
+    for (i <- 1 to 3) {
+      if(majorDestination) {
+        if (distance(array(0) + 9, array(i)) == 0) {
+          array(i) += 1
+        }
+        if (distance(array(0) + 12, array(i)) == 0) {
+          array(i) += 2
+        }
+      }
+      else {
+        if (distance(array(0) + 8, array(i)) == 0) {
+          array(i) += 2
+        }
+        if (distance(array(0) + 12, array(i)) == 0) {
+          array(i) += 1
+        }
+      }
+      if (distance(array(0) + 5, array(i)) == 0) {
+        array(i) -= 1
+      }
+
+    }
+
+    println("poz mainachu%%%%%%%%%%%%%%%%%%")
+    printTab(array,4)
+    array
+  }
+
+  def piatyakord2typ(majorDestination: Boolean,array: Array[Integer]) = {
+
+    println("in cadenceCHORD4&&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+
+    for (i <- 1 to 3) {
+      if(majorDestination) {
+        if (distance(array(0) + 10, array(i)) == 0) {
+          array(i) -= 1
+        }
+        if (distance(array(0) + 2, array(i)) == 0) {
+          array(i) -= 2
+        }
+      }
+      else {
+        if (distance(array(0) + 10, array(i)) == 0) {
+          array(i) -= 2
+        }
+        if (distance(array(0) + 1, array(i)) == 0) {
+          array(i) -= 1
+        }
+      }
+      if (distance(array(0) + 4, array(i)) == 0) {
+        array(i) += 1
+      }
+    }
+    array(0) -= 7
+    println("poz mainachu%%%%%%%%%%%%%%%%%%")
+    printTab(array,4)
+    array
+  }
+
 
   def printTab(array: Array[Integer], size: Integer) = {
     println("------------------")
@@ -297,7 +476,7 @@ object ChordBuilder {
 
   def buildSequenceForFirstType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
     val boxForTonic = tonic(major,source)
-    val boxForFirstChord = modulationChord1(source,destination,boxForTonic)
+    val boxForFirstChord = modulationChord1(ModulationType.First,source,destination,boxForTonic)
 
     println("EYGSUDFJGS: ")
     printTab(boxForFirstChord,4)
@@ -305,6 +484,8 @@ object ChordBuilder {
     val tmp = new Array [Integer] (4)
     val tmp2 = new Array [Integer] (4)
     val tmp3 = new Array [Integer] (4)
+    val tmp4 = new Array [Integer] (4)
+    val tmp5 = new Array [Integer] (4)
     for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
 
     val array3 = modulationChord2(majorDestination,tmp)
@@ -316,6 +497,12 @@ object ChordBuilder {
 
     for(i <- 0 to 3) tmp3(i) = array5(i)
     val array6 = cadenceChord3(majorDestination,tmp3)
+
+    for(i <- 0 to 3) tmp4(i) = array6(i)
+    val array7 = cadenceChord4(majorDestination,tmp4)
+
+    for(i <- 0 to 3) tmp5(i) = array7(i)
+    val array8 = cadenceChord5(majorDestination,tmp5)
 
     println("TEST")
     println("TONIKA")
@@ -332,7 +519,89 @@ object ChordBuilder {
       buildVector(array4(0),array4(1),array4(2),array4(3)) ++
       buildVector(array4(0)+1,array4(1),array4(2),array4(3)) ++
       buildVector(array5(0),array5(1),array5(2),array5(3)) ++
-      buildVector(array6(0),array6(1),array6(2),array6(3))
+      buildVector(array6(0),array6(1),array6(2),array6(3)) ++
+      buildVector(array7(0),array7(1),array7(2),array7(3)) ++
+      buildVector(array8(0),array8(1),array8(2),array8(3))
+  }
+
+  def buildSequenceForSecondType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
+    val boxForTonic = tonic(major,source)
+    val boxForFirstChord = modulationChord1(ModulationType.Second, source,destination,boxForTonic)
+
+    println("EYGSUDFJGS: ")
+    printTab(boxForFirstChord,4)
+
+    //musi znalezc od 6 od destination wsrdo 4 dzwiekow z define modula
+    //pozostale polaczyc najkrotsza droga  <- 1 akord po tonice
+
+    //przepisanie akordu do nowej tablicy
+    val tmp = new Array [Integer] (4)
+    val tmp2 = new Array [Integer] (4)
+    val tmp3 = new Array [Integer] (4)
+    for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
+
+    val array3 = trzeciakord2typ(majorDestination,tmp)
+    //4 akord
+    for(i <- 0 to 3) tmp2(i) = array3(i)
+    val array4 = czwartyakord2typ(majorDestination,tmp2)
+    for(i <- 0 to 3) tmp3(i) = array4(i)
+    val array5 = piatyakord2typ(majorDestination,tmp3)
+
+
+    println("TEST")
+    println("TONIKA")
+    printTab(boxForTonic,4)
+    println("DRUGI AKORD")
+    printTab(boxForFirstChord,4)
+    //println("CZWARTY AKORD")
+    //printTab(array3,4)
+
+    buildVector(boxForTonic(0),boxForTonic(1),boxForTonic(2),boxForTonic(3)) ++
+      buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
+      buildVector(array3(0),array3(1),array3(2),array3(3)) ++
+      buildVector(array4(0),array4(1),array4(2),array4(3)) ++
+      buildVector(array5(0),array5(1),array5(2),array5(3))
+
+  }
+
+  def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
+    val boxForTonic = tonic(major,source)
+    val boxForFirstChord = modulationChord1(ModulationType.Second, source,destination,boxForTonic)
+
+    println("EYGSUDFJGS: ")
+    printTab(boxForFirstChord,4)
+
+    //musi znalezc od 6 od destination wsrdo 4 dzwiekow z define modula
+    //pozostale polaczyc najkrotsza droga  <- 1 akord po tonice
+
+    //przepisanie akordu do nowej tablicy
+    val tmp = new Array [Integer] (4)
+    val tmp2 = new Array [Integer] (4)
+    val tmp3 = new Array [Integer] (4)
+    for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
+
+    val array3 = trzeciakord2typ(majorDestination,tmp)
+    //4 akord
+    for(i <- 0 to 3) tmp2(i) = array3(i)
+    val array4 = czwartyakord2typ(majorDestination,tmp2)
+    for(i <- 0 to 3) tmp3(i) = array4(i)
+    val array5 = piatyakord2typ(majorDestination,tmp3)
+
+
+    println("TEST")
+    println("TONIKA")
+    printTab(boxForTonic,4)
+    println("DRUGI AKORD")
+    printTab(boxForFirstChord,4)
+    //println("CZWARTY AKORD")
+    //printTab(array3,4)
+
+    buildVector(boxForTonic(0),boxForTonic(1),boxForTonic(2),boxForTonic(3)) ++
+      buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
+      buildVector(array3(0),array3(1),array3(2),array3(3)) ++
+      buildVector(array4(0),array4(1),array4(2),array4(3)) ++
+      buildVector(array5(0),array5(1),array5(2),array5(3))
+
   }
 
 
