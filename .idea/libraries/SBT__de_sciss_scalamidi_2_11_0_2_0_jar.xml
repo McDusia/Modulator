@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: de.sciss:scalamidi_2.11:0.2.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/de.sciss/scalamidi_2.11/jars/scalamidi_2.11-0.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/de.sciss/scalamidi_2.11/srcs/scalamidi_2.11-0.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
