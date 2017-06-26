@@ -9,8 +9,7 @@ object scala{
 
     val path = "C:\\Users\\Madzia\\Modulator\\test.mid"
     //------setting tempo------------
-    implicit val rate = TickRate.tempo(bpm = 120, tpq = 512)
-
+    implicit val rate = TickRate.tempo(bpm = 120, tpq = 1024)
 
     val source = args(0)
     val destination = args(1)
@@ -18,13 +17,10 @@ object scala{
     val dNr = LetterToSound.findSound(destination)
     println("pattern matching: " + sNr)
 
-
     val kind = DefineModulationType.defineType(sNr,dNr)
     Type.printType(kind)
-    var sq = Vector(
-      NoteOn(0,1,50),
-      NoteOff(0,1,0)
-    )
+    var sq = Vector(NoteOn(0,1,50), NoteOff(0,1,0))
+
     kind match {
       case ModulationType.First => {
         println("first")
@@ -40,8 +36,7 @@ object scala{
       }
     }
 
-
-    val c1 = sq.zipWithIndex.map{case (m,i) => Event((i*rate.value).toLong, m) }
+    val c1 = sq.zipWithIndex.map{case (m,i) => Event((i*0.5*rate.value).toLong, m) }
     val c2 = Track(c1)
     val c3 = Sequence(Vector(c2))
     c3.write(path)

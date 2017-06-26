@@ -15,6 +15,10 @@ object ChordBuilder {
     )
   }
 
+  def buildParallelTracks(a: Int, b: Int, c: Int, d: Int) = {
+
+  }
+
   def tonic(major: Boolean, keynote: Int) = {
     val array = new Array[Int](4)
     array(0) = keynote - 12
@@ -332,52 +336,33 @@ object ChordBuilder {
         array(i) -= 2
       }
     }
-
     array(0) += 1
     array
   }
 
-  def moveNotes(old: Array[Int], toAdd: Array[Int]) = {
-    val array = for((a,b) <- old zip toAdd) yield a+b
-    array
-  }
 
   def moveNotesWithMap(old: Array[Int], toAdd: Map[Int,Int]) = {
 
     val array = for((a,b) <- Array(0,1,2,3) zip old) yield(b + toAdd.getOrElse(a,-1))
     array
   }
-
-  def tescik(majorDestination: Boolean, array: Array[Int]) = {
-    if(majorDestination) {
-      val result = array.map(e =>
-        if (distance(array(0) + 9, e) == 0) e + 1
-        else if (distance(array(0) + 12, e) == 0) e + 2
-        else if (distance(array(0) + 5, e) == 0) e - 1
-        else e)
-    }
-    else {
-      val result = array.map(e =>
-        if (distance(array(0) + 8, e) == 0) e + 2
-        else if (distance(array(0) + 12, e) == 0) e + 1
-        else if (distance(array(0) + 5, e) == 0) e - 1
-        else e)
-    }
-  }
-
-  def findIndexes(majorDestination: Boolean, array: Array[Int]) = {
+//znajdowanie indeksów dla 4 akordu typ 2
+  def findIndexes(majorDestination: Boolean, array: Array[Int], findIfMajor: Array[Int], findIfMinor: Array[Int]) = {
     var indexes = new Array [Int] (4)
     val withoutBass = new Array [Int] (3)
     for(i <- 0 to 2) withoutBass(i) = array(i+1)
+
     if(majorDestination) {
-      indexes(1) = withoutBass.indexOf(withoutBass.find((distance(array(0)+9,_)==0)).getOrElse(-1))
-      indexes(2) = withoutBass.indexOf(withoutBass.find((distance(array(0)+12,_)==0)).getOrElse(-1))
+      indexes(1) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMajor(1),_)==0)).getOrElse(-1))
+      indexes(2) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMajor(2),_)==0)).getOrElse(-1))
+      indexes(3) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMajor(3),_)==0)).getOrElse(-1))
     }
     else {
-      indexes(1) = withoutBass.indexOf(withoutBass.find((distance(array(0)+8,_)==0)).getOrElse(-1))
-      indexes(2) = withoutBass.indexOf(withoutBass.find((distance(array(0)+12,_)==0)).getOrElse(-1))
+      indexes(1) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMinor(1),_)==0)).getOrElse(-1))
+      indexes(2) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMinor(2),_)==0)).getOrElse(-1))
+      indexes(3) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMinor(3),_)==0)).getOrElse(-1))
     }
-    indexes(3) = withoutBass.indexOf(withoutBass.find((distance(array(0)+5,_)==0)).getOrElse(-1))
+
     indexes(0) = -1
     indexes = indexes.map(e=> (e+1))
 
@@ -386,48 +371,17 @@ object ChordBuilder {
     indexes
   }
 
-  def testFourthChord2Type(majorDestination: Boolean, array: Array[Int]) = {
-    val indexes = findIndexes(majorDestination,array)
+  def fourthChord2Type(majorDestination: Boolean, array: Array[Int]) = {
+    val indexes = findIndexes(majorDestination,array,Array(0,9,12,5),Array(0,8,12,5))
     var map = Map(indexes(0)->0)
     if(majorDestination)
       map = Map(indexes(0) -> 0, indexes(1) -> 1,indexes(2) -> 2,indexes(3) -> -1)
     else
       map = Map(indexes(0) -> 0, indexes(1) -> 2,indexes(2) -> 1,indexes(3) -> -1)
-    println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-    println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-    printTab(array,4)
-    val result = moveNotesWithMap(array,map)
-    printTab(result,4)
-    result
+
+    moveNotesWithMap(array,map)
   }
-  def fourthChord2type(majorDestination: Boolean, array: Array[Int]) = {
-    println("REFACTORING ***************")
-    printTab(array,4)
-    for (i <- 1 to 3) {
-      if(majorDestination) {
-        if (distance(array(0) + 9, array(i)) == 0) {
-          array(i) += 1
-        }
-        if (distance(array(0) + 12, array(i)) == 0) {
-          array(i) += 2
-        }
-      }
-      else {
-        if (distance(array(0) + 8, array(i)) == 0) {
-          array(i) += 2
-        }
-        if (distance(array(0) + 12, array(i)) == 0) {
-          array(i) += 1
-        }
-      }
-      if (distance(array(0) + 5, array(i)) == 0) {
-        array(i) -= 1
-      }
-    }
-    println("fourthChord2Type:")
-    printTab(array,4)
-    array
-  }
+
 
   def fifthChord2Type(majorDestination: Boolean, array: Array[Int]) = {
 
@@ -716,13 +670,6 @@ object ChordBuilder {
     for(i <- 0 to 3) tmp5(i) = array7(i)
     val array8 = cadenceChord5(majorDestination,tmp5)
 
-    println("TEST")
-    println("TONIKA")
-    printTab(boxForTonic,4)
-    println("DRUGI AKORD")
-    printTab(boxForFirstChord,4)
-    //println("CZWARTY AKORD")
-    //printTab(array3,4)
 
     buildVector(boxForTonic(0),boxForTonic(1),boxForTonic(2),boxForTonic(3)) ++
       buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
@@ -752,7 +699,7 @@ object ChordBuilder {
     val array3 = thirdChord2type(majorDestination,tmp)
     //4 akord
     for(i <- 0 to 3) tmp2(i) = array3(i)
-    val array4 = testFourthChord2Type(majorDestination,tmp2)
+    val array4 = fourthChord2Type(majorDestination,tmp2)
     for(i <- 0 to 3) tmp3(i) = array4(i)
     val array5 = fifthChord2Type(majorDestination,tmp3)
 
@@ -802,24 +749,15 @@ object ChordBuilder {
     for(i <- 0 to 3) tmp7(i) = array8(i)
     val array9 = dziewiatyakord3typ(majorDestination,tmp7)
 
-    println("TEST")
-    println("TONIKA")
-    printTab(boxForTonic,4)
-    println("DRUGI AKORD")
-    printTab(boxForFirstChord,4)
-    //println("CZWARTY AKORD")
-    //printTab(array3,4)
-
     buildVector(boxForTonic(0),boxForTonic(1),boxForTonic(2),boxForTonic(3)) ++
-      buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
-      buildVector(array3(0),array3(1),array3(2),array3(3)) ++
-      buildVector(array4(0),array4(1),array4(2),array4(3)) ++
-      buildVector(array5(0),array5(1),array5(2),array5(3)) ++
-      buildVector(array6(0),array6(1),array6(2),array6(3)) ++
-      buildVector(array7(0),array7(1),array7(2),array7(3)) ++
-      buildVector(array8(0),array8(1),array8(2),array8(3)) ++
-      buildVector(array9(0),array9(1),array9(2),array9(3))
-
+    buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
+    buildVector(array3(0),array3(1),array3(2),array3(3)) ++
+    buildVector(array4(0),array4(1),array4(2),array4(3)) ++
+    buildVector(array5(0),array5(1),array5(2),array5(3)) ++
+    buildVector(array6(0),array6(1),array6(2),array6(3)) ++
+    buildVector(array7(0),array7(1),array7(2),array7(3)) ++
+    buildVector(array8(0),array8(1),array8(2),array8(3)) ++
+    buildVector(array9(0),array9(1),array9(2),array9(3))
 
   }
 
