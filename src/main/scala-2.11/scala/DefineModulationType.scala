@@ -4,17 +4,17 @@ import Type._
 object DefineModulationType {
   /*sealed abstract class ModulationType
 
-  class firstType(source:Integer,destination:Integer) extends ModulationType
-  class secondType(source:Integer,destination:Integer) extends ModulationType
-  class thirdType(source:Integer,destination:Integer) extends ModulationType
+  class firstType(source:Int,destination:Int) extends ModulationType
+  class secondType(source:Int,destination:Int) extends ModulationType
+  class thirdType(source:Int,destination:Int) extends ModulationType
   */
   private var secondType = false
   private var thirdType = false
   private var firstType = false
 
-  def abs(x: Integer): Integer = { if (x >= 0) x else -x }
+  def abs(x: Int): Int = { if (x >= 0) x else -x }
 
-  private def setTypeVariables(source:Integer,destination:Integer) = {
+  private def setTypeVariables(source:Int,destination:Int) = {
     //odleglosc tonacji jest wielokrotnoscia 3
     firstType = ((source-destination) % 3 == 0)
     //budujemy akord od 7 stopnia
@@ -28,7 +28,7 @@ object DefineModulationType {
     }
   }
 
-  def defineType(source:Integer,destination:Integer) = {
+  def defineType(source:Int,destination:Int) = {
     setTypeVariables(source,destination)
     var modType = ModulationType.First
     if (firstType) {

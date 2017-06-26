@@ -11,7 +11,6 @@ object scala{
     //------setting tempo------------
     implicit val rate = TickRate.tempo(bpm = 120, tpq = 512)
 
-    //----TEST pattern matching----
 
     val source = args(0)
     val destination = args(1)
@@ -19,14 +18,6 @@ object scala{
     val dNr = LetterToSound.findSound(destination)
     println("pattern matching: " + sNr)
 
-    //----TEST ChordBuilder--------
-
-
-    val debug = ChordBuilder.minJumps(1,2,1)
-    println("**************TEST******   " )
-    //val t = ChordBuilder.printTab(debug,debug.size)
-    //val t2 = ChordBuilder.distance(44,)
-    //val t1 = ChordBuilder.findMinimalChange(Array(36,41,47),Array(42,38,46),3)
 
     val kind = DefineModulationType.defineType(sNr,dNr)
     Type.printType(kind)

@@ -5,7 +5,7 @@ import Type.ModulationType
 
 object ChordBuilder {
 
-  def buildVector(a: Integer, b: Integer, c: Integer, d: Integer) = {
+  def buildVector(a: Int, b: Int, c: Int, d: Int) = {
     Vector(
       NoteOn(0,a,120),NoteOn(0,b,120),
       NoteOn(0,c,120), NoteOn(0,d,120),
@@ -15,8 +15,8 @@ object ChordBuilder {
     )
   }
 
-  def tonic(major: Boolean, keynote: Integer) = {
-    val array = new Array[Integer](4)
+  def tonic(major: Boolean, keynote: Int) = {
+    val array = new Array[Int](4)
     array(0) = keynote - 12
     array(1) = if(major) keynote + 4 else keynote + 3
     array(2) = keynote + 7
@@ -24,13 +24,13 @@ object ChordBuilder {
     array
   }
 
-  def abs(x: Integer) : Integer = { if (x >= 0) x else -x }
+  def abs(x: Int) : Int = { if (x >= 0) x else -x }
 
-  def distanceForInt(x: Integer, y: Integer) = abs(x - y)
+  def distanceForInt(x: Int, y: Int) = abs(x - y)
 
   //-----dostaje 3 odleglosci i zwraca najkrótszą jesli istnieje,
   // lub tablice, jeśli jest kilka tak samo małych
-  def minJumps(x: Integer, y: Integer, z: Integer): Array[Integer] = {
+  def minJumps(x: Int, y: Int, z: Int): Array[Int] = {
     val a = abs(x)
     val b = abs(y)
     val c = abs(z)
@@ -44,7 +44,7 @@ object ChordBuilder {
 
   }
 
-  def distance(x: Integer, y: Integer) = {
+  def distance(x: Int, y: Int) = {
     val a = (y - x)%12
     if(a > 0) {
       //skok w górę
@@ -58,17 +58,17 @@ object ChordBuilder {
     }
   }
 
-  def findMinimalChange(rest: Array[Integer], restTonic: Array[Integer], size: Integer, minus: Boolean) = {
-    println("reszta akordu docelowego:")
-    printTab(rest,3)
-    println("reszta toniki:")
-    printTab(restTonic,3)
+  def findMinimalChange(rest: Array[Int], restTonic: Array[Int], size: Int, minus: Boolean) = {
+    //println("reszta akordu docelowego:")
+    //printTab(rest,3)
+    //println("reszta toniki:")
+    //printTab(restTonic,3)
 
     if(size != 3) println("error in findMinimalChange")  //wyczyścić
     //------for each note in rest count distances from notes in restTonic:
-    val dist0 = new Array[Integer](3)
-    val dist1 = new Array[Integer](3)
-    val dist2 = new Array[Integer](3)
+    val dist0 = new Array[Int](3)
+    val dist1 = new Array[Int](3)
+    val dist2 = new Array[Int](3)
 
     //distX - distances X note from notes in restTonic(rest notes from tonic chord)
     for(i <- 0 to 2) {
@@ -83,7 +83,7 @@ object ChordBuilder {
 
    var min = 36
     var index1 = -1; var index2 = -1; var index3 = -1;
-  println("ti")
+  //println("ti")
     //----check witch sum will be the smallest
     //if(j!=i) , ; if(k!=i && k!=j)
     for(i <- 0 to 2; j<- 0 to 2;  if(j!=i); k<- 0 to 2; if(k!=i && k!=j)) {
@@ -97,18 +97,18 @@ object ChordBuilder {
         index3 = k
       }
     }
-    println("znalezione min"+ min)
-    println("ti")
+    //println("znalezione min"+ min)
+    //println("ti")
     val a = Array(dist0(index1),dist1(index2),dist2(index3))
-    println("in findMinimalChange")
-    printTab(a,3)
+    //println("in findMinimalChange")
+    //printTab(a,3)
     a
   }
 
-  def modulationChord1(t: Type.ModulationType.ModulationType ,source:Integer, destination:Integer, tonic: Array[Integer]) = {
+  def modulationChord1(t: Type.ModulationType.ModulationType ,source:Int, destination:Int, tonic: Array[Int]) = {
 
-    println("***************** In modChord1 *******************")
-    printTab(tonic,4)
+    //println("***************** In modChord1 *******************")
+    //printTab(tonic,4)
     val seventhPitch = source + 11 //tzw. septyma tonacji źródłowej
     val ninthPith = destination + 20  //tzw. nona tonacji docelowej
 
@@ -116,7 +116,7 @@ object ChordBuilder {
     val dominantsPrime = destination + 7
     //zbuduj 4 dźwięki od 7 stopnia tonacji wyjściowej
     println("ninth " + ninthPith)
-    val tab = new Array [Integer](4)
+    val tab = new Array [Int](4)
 
     //obliczenie dźwięków z drugiego akordu
     for(i <- 0 to 3) {tab(i) = seventhPitch + 3 * i; println("tab(i): " + tab(i)) }
@@ -147,14 +147,14 @@ object ChordBuilder {
 
     //--------------------------
     //tablica na gotowy akord
-    val result = new Array [Integer](4)
+    val result = new Array [Int](4)
     //obliczenie basu, tonika -> znaleziony wcześniej dźwięk
     val temporary = distance(tonic(0), tab(index))
     result(0) = tonic(0) + temporary
     println("pierwszy dzwiek: "+ result(0))
     //przepisujemy pozostałe dźwięki z akordu toniki do nowej tablicy
-    val rest = new Array [Integer](3)
-    val restTonic = new Array [Integer](3)
+    val rest = new Array [Int](3)
+    val restTonic = new Array [Int](3)
     var i = 0
     for(j <- 0 to 3; if(j != index)) {rest(i) = tab(j); restTonic(i) = tonic(i+1); i = i+1}
 
@@ -180,7 +180,7 @@ object ChordBuilder {
     result
   }
 
-  def cadenceChord1(majorDestination: Boolean, array: Array[Integer], destination: Integer) = {
+  def cadenceChord1(majorDestination: Boolean, array: Array[Int], destination: Int) = {
     //nowa pryma akordu
     array(0) = array(0) + distance(array(0),destination+5)
     println("nowa pryma: "+ array(0))
@@ -223,7 +223,7 @@ object ChordBuilder {
     array
   }
 
-  def cadenceChord2(majorDestination: Boolean,array: Array[Integer]) = {
+  def cadenceChord2(majorDestination: Boolean,array: Array[Int]) = {
 
       for(i<-1 to 3)
       {
@@ -243,7 +243,7 @@ object ChordBuilder {
       array
   }
 
-  def cadenceChord3(majorDestination: Boolean,array: Array[Integer]) = {
+  def cadenceChord3(majorDestination: Boolean,array: Array[Int]) = {
 
     println("in cadenceCHORD &&&&&&&&&&&&&&&&&&&&")
     printTab(array,4)
@@ -274,21 +274,17 @@ object ChordBuilder {
     array
   }
 
-  def cadenceChord4(majorDestination: Boolean,array: Array[Integer]) = {
+  def cadenceChord4(majorDestination: Boolean,array: Array[Int]) = {
 
     for(i<-1 to 3)
     {
-      //if(majorDestination) {
-        if (distance(array(0) + 6, array(i)) == 0) {
-          array(i) -= 1
-        }
-      //}
-      //else {
-        if (distance(array(0) + 3, array(i)) == 0) {
-          array(i) -= 4
-        }
-      //}
+      if (distance(array(0) + 6, array(i)) == 0) {
+        array(i) -= 1
+      }
 
+      if (distance(array(0) + 3, array(i)) == 0) {
+        array(i) -= 4
+      }
       if(distance(array(0) + 8, array(i))==0) {
         //nic
       }
@@ -297,7 +293,7 @@ object ChordBuilder {
     array
   }
 
-  def cadenceChord5(majorDestination: Boolean,array: Array[Integer]) = {
+  def cadenceChord5(majorDestination: Boolean,array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if (distance(array(0) + 7, array(i)) == 0) {
@@ -315,11 +311,11 @@ object ChordBuilder {
     array
   }
 
-  def findChord(majorDestination:Boolean, array:Array[Integer]) = {
+  def findChord(majorDestination:Boolean, array:Array[Int]) = {
     //nic
   }
 
-  def thirdChord2type(majorDestination: Boolean, array: Array[Integer]) = {
+  def thirdChord2type(majorDestination: Boolean, array: Array[Int]) = {
 
     for (i <- 1 to 3) {
 
@@ -341,19 +337,18 @@ object ChordBuilder {
     array
   }
 
-  def moveNotes(old: Array[Integer], toAdd: Array[Integer]) = {
+  def moveNotes(old: Array[Int], toAdd: Array[Int]) = {
     val array = for((a,b) <- old zip toAdd) yield a+b
     array
   }
 
-  def moveNotesWithMap(old: Array[Integer], toAdd: Map[Integer,Int]) = {
-    val oldZippedWithIndexes = List(1,2,3,4) zip old
+  def moveNotesWithMap(old: Array[Int], toAdd: Map[Int,Int]) = {
 
-    val array = for((a,b) <- oldZippedWithIndexes) yield(b + toAdd.getOrElse(a,-1))
+    val array = for((a,b) <- Array(0,1,2,3) zip old) yield(b + toAdd.getOrElse(a,-1))
     array
   }
 
-  def tescik(majorDestination: Boolean, array: Array[Integer]) = {
+  def tescik(majorDestination: Boolean, array: Array[Int]) = {
     if(majorDestination) {
       val result = array.map(e =>
         if (distance(array(0) + 9, e) == 0) e + 1
@@ -370,30 +365,42 @@ object ChordBuilder {
     }
   }
 
-  def findIndexes(majorDestination: Boolean, array: Array[Integer]) = {
-    val indexes = new Array [Integer] (4)
+  def findIndexes(majorDestination: Boolean, array: Array[Int]) = {
+    var indexes = new Array [Int] (4)
+    val withoutBass = new Array [Int] (3)
+    for(i <- 0 to 2) withoutBass(i) = array(i+1)
     if(majorDestination) {
-      indexes(1) = array.indexOf(array.find((distance(array(0)+9,_)==0)).getOrElse(-1))
-      indexes(2) = array.indexOf(array.find((distance(array(0)+12,_)==0)).getOrElse(-1))
+      indexes(1) = withoutBass.indexOf(withoutBass.find((distance(array(0)+9,_)==0)).getOrElse(-1))
+      indexes(2) = withoutBass.indexOf(withoutBass.find((distance(array(0)+12,_)==0)).getOrElse(-1))
     }
     else {
-      indexes(1) = array.indexOf(array.find((distance(array(0)+8,_)==0)).getOrElse(-1))
-      indexes(2) = array.indexOf(array.find((distance(array(0)+12,_)==0)).getOrElse(-1))
+      indexes(1) = withoutBass.indexOf(withoutBass.find((distance(array(0)+8,_)==0)).getOrElse(-1))
+      indexes(2) = withoutBass.indexOf(withoutBass.find((distance(array(0)+12,_)==0)).getOrElse(-1))
     }
-    indexes(3) = array.indexOf(array.find((distance(array(0)+5,_)==0)).getOrElse(-1))
+    indexes(3) = withoutBass.indexOf(withoutBass.find((distance(array(0)+5,_)==0)).getOrElse(-1))
+    indexes(0) = -1
+    indexes = indexes.map(e=> (e+1))
+
+    println("znalezione indeksy:")
+    printTab(indexes,4)
     indexes
   }
 
-  def testFourthChord2Type(majorDestination: Boolean, array: Array[Integer]) = {
+  def testFourthChord2Type(majorDestination: Boolean, array: Array[Int]) = {
     val indexes = findIndexes(majorDestination,array)
     var map = Map(indexes(0)->0)
     if(majorDestination)
       map = Map(indexes(0) -> 0, indexes(1) -> 1,indexes(2) -> 2,indexes(3) -> -1)
     else
       map = Map(indexes(0) -> 0, indexes(1) -> 2,indexes(2) -> 1,indexes(3) -> -1)
-    moveNotesWithMap(array,map)
+    println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+    println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+    printTab(array,4)
+    val result = moveNotesWithMap(array,map)
+    printTab(result,4)
+    result
   }
-  def fourthChord2type(majorDestination: Boolean, array: Array[Integer]) = {
+  def fourthChord2type(majorDestination: Boolean, array: Array[Int]) = {
     println("REFACTORING ***************")
     printTab(array,4)
     for (i <- 1 to 3) {
@@ -422,7 +429,7 @@ object ChordBuilder {
     array
   }
 
-  def fifthChord2Type(majorDestination: Boolean, array: Array[Integer]) = {
+  def fifthChord2Type(majorDestination: Boolean, array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if(majorDestination) {
@@ -450,7 +457,7 @@ object ChordBuilder {
   }
 
 
-  def thirdChord3Type(majorDestination: Boolean, array: Array[Integer]) = {
+  def thirdChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
   var index1 = -1
   var index2 = -1
@@ -471,7 +478,7 @@ object ChordBuilder {
     array
   }
 
-  def czwartyakord3typ(majorDestination: Boolean,array: Array[Integer]) = {
+  def czwartyakord3typ(majorDestination: Boolean,array: Array[Int]) = {
 
     for (i <- 1 to 3) {
 
@@ -492,7 +499,7 @@ object ChordBuilder {
     array
   }
 
-  def piatyakord3typ(majorDestination: Boolean,array: Array[Integer]) = {
+  def piatyakord3typ(majorDestination: Boolean,array: Array[Int]) = {
 
     println("in PIATY AKORD&&&&&&&&&&&&&&&&&&&&")
     printTab(array,4)
@@ -533,7 +540,7 @@ object ChordBuilder {
     array
   }
 
-  def szostyakord3typ(majorDestination: Boolean,array: Array[Integer]) = {
+  def szostyakord3typ(majorDestination: Boolean,array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if(majorDestination) {
@@ -551,7 +558,7 @@ object ChordBuilder {
     array
   }
 
-  def siodmyakord3typ(majorDestination: Boolean,array: Array[Integer]) = {
+  def siodmyakord3typ(majorDestination: Boolean,array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if(majorDestination) {
@@ -576,7 +583,7 @@ object ChordBuilder {
     array
   }
 
-  def osmyakord3typ(majorDestination: Boolean,array: Array[Integer]) = {
+  def osmyakord3typ(majorDestination: Boolean,array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if (distance(array(0) + 5, array(i)) == 0) {
@@ -604,7 +611,7 @@ object ChordBuilder {
     array
   }
 
-  def dziewiatyakord3typ(majorDestination: Boolean,array: Array[Integer]) = {
+  def dziewiatyakord3typ(majorDestination: Boolean,array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if (distance(array(0) + 4, array(i)) == 0) {
@@ -635,21 +642,21 @@ object ChordBuilder {
   }
 
 
-  def printTab(array: Array[Integer], size: Integer) = {
+  def printTab(array: Array[Int], size: Int) = {
     println("------------------")
     for (i <- 0 to (size-1)) println("elem(" + i + ")" + array(i))
     println("------------------")
   }
 
   //funkcja przyjmuje czy tonacja docelowa jest durowa i 1 akord modulacji
-  def modulationChord2(major: Boolean, tab: Array[Integer]) = {
+  def modulationChord2(major: Boolean, tab: Array[Int]) = {
 
     tab(0) = tab(0) - 1
     //println("w ModChord2, array(0)" + array(0) + " array(1) " + array(1) + "array(2)" + array(2))
     println("WZIETY TRZECI AKORD")
     printTab(tab, 4)
 
-    val result = new Array[Integer] (4)
+    val result = new Array[Int] (4)
     if(major) {result(0) = tab(0) + 2}
       else {result(0) = tab(0) + 1 }
 
@@ -679,18 +686,18 @@ object ChordBuilder {
     result
   }
 
-  def buildSequenceForFirstType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
+  def buildSequenceForFirstType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
     val boxForFirstChord = modulationChord1(ModulationType.First,source,destination,boxForTonic)
 
     println("EYGSUDFJGS: ")
     printTab(boxForFirstChord,4)
     //przepisanie akordu do nowej tablicy
-    val tmp = new Array [Integer] (4)
-    val tmp2 = new Array [Integer] (4)
-    val tmp3 = new Array [Integer] (4)
-    val tmp4 = new Array [Integer] (4)
-    val tmp5 = new Array [Integer] (4)
+    val tmp = new Array [Int] (4)
+    val tmp2 = new Array [Int] (4)
+    val tmp3 = new Array [Int] (4)
+    val tmp4 = new Array [Int] (4)
+    val tmp5 = new Array [Int] (4)
     for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
 
     val array3 = modulationChord2(majorDestination,tmp)
@@ -729,37 +736,25 @@ object ChordBuilder {
       buildVector(array8(0),array8(1),array8(2),array8(3))
   }
 
-  def buildSequenceForSecondType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
+  def buildSequenceForSecondType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
     val boxForFirstChord = modulationChord1(ModulationType.Second, source,destination,boxForTonic)
-
-    println("EYGSUDFJGS: ")
-    printTab(boxForFirstChord,4)
 
     //musi znalezc od 6 od destination wsrdo 4 dzwiekow z define modula
     //pozostale polaczyc najkrotsza droga  <- 1 akord po tonice
 
     //przepisanie akordu do nowej tablicy
-    val tmp = new Array [Integer] (4)
-    val tmp2 = new Array [Integer] (4)
-    val tmp3 = new Array [Integer] (4)
+    val tmp = new Array [Int] (4)
+    val tmp2 = new Array [Int] (4)
+    val tmp3 = new Array [Int] (4)
     for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
 
     val array3 = thirdChord2type(majorDestination,tmp)
     //4 akord
     for(i <- 0 to 3) tmp2(i) = array3(i)
-    val array4 = fourthChord2type(majorDestination,tmp2)
+    val array4 = testFourthChord2Type(majorDestination,tmp2)
     for(i <- 0 to 3) tmp3(i) = array4(i)
     val array5 = fifthChord2Type(majorDestination,tmp3)
-
-
-    println("TEST")
-    println("TONIKA")
-    printTab(boxForTonic,4)
-    println("DRUGI AKORD")
-    printTab(boxForFirstChord,4)
-    //println("CZWARTY AKORD")
-    //printTab(array3,4)
 
     buildVector(boxForTonic(0),boxForTonic(1),boxForTonic(2),boxForTonic(3)) ++
       buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
@@ -769,24 +764,23 @@ object ChordBuilder {
 
   }
 
-  def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Integer, destination: Integer) = {
+  def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
     val boxForFirstChord = modulationChord1(ModulationType.Third, source,destination,boxForTonic)
 
-    println("EYGSUDFJGS: ")
     printTab(boxForFirstChord,4)
 
     //musi znalezc od 6 od destination wsrdo 4 dzwiekow z define modula
     //pozostale polaczyc najkrotsza droga  <- 1 akord po tonice
 
     //przepisanie akordu do nowej tablicy
-    val tmp = new Array [Integer] (4)
-    val tmp2 = new Array [Integer] (4)
-    val tmp3 = new Array [Integer] (4)
-    val tmp4 = new Array [Integer] (4)
-    val tmp5 = new Array [Integer] (4)
-    val tmp6 = new Array [Integer] (4)
-    val tmp7 = new Array [Integer] (4)
+    val tmp = new Array [Int] (4)
+    val tmp2 = new Array [Int] (4)
+    val tmp3 = new Array [Int] (4)
+    val tmp4 = new Array [Int] (4)
+    val tmp5 = new Array [Int] (4)
+    val tmp6 = new Array [Int] (4)
+    val tmp7 = new Array [Int] (4)
     for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
 
     val array3 = thirdChord3Type(majorDestination,tmp)
