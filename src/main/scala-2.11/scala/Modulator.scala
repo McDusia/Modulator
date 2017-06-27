@@ -3,11 +3,11 @@ package scala
 import de.sciss.midi._
 import Type._
 
-object scala{
+object Modulator{
 
   def main(args: Array[String]) {
 
-    val path = "C:\\Users\\Madzia\\Modulator\\modulation.mid"
+    val path = "C:\\Users\\Madzia\\Modulator\\.mid"
     //------setting tempo------------
     implicit val rate = TickRate.tempo(bpm = 120, tpq = 1024)
 
@@ -32,7 +32,7 @@ object scala{
       }
       case ModulationType.Third => {
         println("third")
-        sq = ChordBuilder3.buildSequenceForThirdType(LetterToSound.isMajor(source), LetterToSound.isMajor(destination), sNr, dNr)
+        sq = ChordBuilder.buildSequenceForThirdType(LetterToSound.isMajor(source), LetterToSound.isMajor(destination), sNr, dNr)
       }
     }
 

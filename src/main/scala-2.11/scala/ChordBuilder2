@@ -1,8 +1,7 @@
 package scala
 
-import de.sciss.midi.{NoteOff, NoteOn}
-import Type.ModulationType
 import ChordBuilder._
+import Type.ModulationType
 
 object ChordBuilder2 {
 
