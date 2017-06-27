@@ -41,9 +41,5 @@ object scala{
     val c3 = Sequence(Vector(c2))
     c3.write(path)
 
-
-    //ChordBuilder.changeNote(Array(1,8,30,4),Array(1,2,1,5))
-    //ChordBuilder.tescik(true,Array(1,2,3,4))
-
   }
 }

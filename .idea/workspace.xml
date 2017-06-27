@@ -1,17 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/scala-2.11/scala/ChordBuilder.scala" line="187" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/scala-2.11/scala/ChordBuilder.scala" line="161" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78c453bd-4ff6-4954-8915-3633f32138fd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$6$$anonfun$apply$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$fourthChord2type$1.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/scala$$anonfun$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/scala$$anonfun$1.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$2$$anonfun$apply$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$dziewiatyakord3typ$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$fifthChord2type$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$11.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$12.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$13.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$14.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$osmyakord3typ$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$piatyakord3typ$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$siodmyakord3typ$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$szostyakord3typ$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$thirdChord2type$1.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForFirstType$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForSecondType$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForSecondType$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForSecondType$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForSecondType$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForSecondType$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForSecondType$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$7.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$buildSequenceForThirdType$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord2$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord2$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord3$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord4$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord4$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord5$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$cadenceChord5$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$czwartyakord3typ$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$czwartyakord3typ$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findIndexes$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2$$anonfun$apply$mcVI$sp$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$findMinimalChange$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord1$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord2$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$modulationChord2$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$printTab$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$printTab$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$thirdChord3Type$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$thirdChord3Type$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$thirdChord3Type$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$$anonfun$thirdChord3Type$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder$.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/scala/scala$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/scala/scala$.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.mid" afterPath="$PROJECT_DIR$/test.mid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -53,8 +109,8 @@
       <file leaf-file-name="scala.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/scala.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="618">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="e#15#37#0" expanded="true" />
               </folding>
@@ -65,8 +121,44 @@
       <file leaf-file-name="ChordBuilder.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/ChordBuilder.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="381" column="31" lean-forward="false" selection-start-line="381" selection-start-column="31" selection-end-line="381" selection-end-column="31" />
+            <state relative-caret-position="325">
+              <caret line="322" column="48" lean-forward="false" selection-start-line="322" selection-start-column="48" selection-end-line="322" selection-end-column="48" />
+              <folding>
+                <element signature="e#15#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChordBuilder2Type" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder2Type">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <element signature="e#15#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChordBuilder3Type" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder3Type">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding>
+                <element signature="e#15#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChordBuilder1Type" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder1Type">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
               <folding>
                 <element signature="e#15#53#0" expanded="true" />
               </folding>
@@ -77,8 +169,8 @@
       <file leaf-file-name="DefineModulationType.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/DefineModulationType.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="402">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -103,6 +195,8 @@
       <find>Integer</find>
       <find>printTab</find>
       <find>abs</find>
+      <find>findMinimalChange</find>
+      <find>modulationChord1</find>
     </findStrings>
     <replaceStrings>
       <replace>Int</replace>
@@ -126,15 +220,17 @@
         <option value="$PROJECT_DIR$/src/main/scala-2.11/scala/Type.scala" />
         <option value="$PROJECT_DIR$/src/main/scala-2.11/scala/DefineModulationType.scala" />
         <option value="$PROJECT_DIR$/src/main/scala-2.11/scala/scala.scala" />
+        <option value="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder2Type" />
+        <option value="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder3Type" />
+        <option value="$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder1Type" />
         <option value="$PROJECT_DIR$/src/main/scala-2.11/scala/ChordBuilder.scala" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="543" />
-    <option name="y" value="-1573" />
-    <option name="width" value="1555" />
-    <option name="height" value="1427" />
+    <option name="x" value="102" />
+    <option name="width" value="1828" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -163,6 +259,64 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala-2.11" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala-2.11" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -622,7 +776,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="scala.scala" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="C D" />
+      <option name="PROGRAM_PARAMETERS" value="h g" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
@@ -695,13 +849,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="543" y="-1573" width="1555" height="1427" extended-state="0" />
+    <frame x="102" y="0" width="1828" height="1030" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21533442" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21508141" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -709,12 +863,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14095744" sideWeight="0.17624521" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17373572" sideWeight="0.8237548" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11580217" sideWeight="0.8237548" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.077586204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21428572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1011,6 +1165,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/scala.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder3Type">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#15#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder1Type">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+          <folding>
+            <element signature="e#15#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/Type.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1021,26 +1205,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/DefineModulationType.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="402">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/scala.scala">
+    <entry file="file://$PROJECT_DIR$/target/scala-2.11/classes/scala/ChordBuilder2Type">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <element signature="e#15#37#0" expanded="true" />
+            <element signature="e#15#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala-2.11/scala/ChordBuilder.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="381" column="31" lean-forward="false" selection-start-line="381" selection-start-column="31" selection-end-line="381" selection-end-column="31" />
+        <state relative-caret-position="325">
+          <caret line="322" column="48" lean-forward="false" selection-start-line="322" selection-start-column="48" selection-end-line="322" selection-end-column="48" />
           <folding>
             <element signature="e#15#53#0" expanded="true" />
           </folding>
