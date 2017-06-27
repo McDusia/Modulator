@@ -3,7 +3,7 @@ package scala
 import de.sciss.midi._
 import Type._
 
-object scala{
+object Modulator{
 
   def main(args: Array[String]) {
 
