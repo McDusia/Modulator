@@ -70,28 +70,24 @@ object ChordBuilder3 {
 
   def fifthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
-    println("PRZEDDDDDDDDDDDDDDDDDDD")
-    printTab(array,4)
     var found = false
     for (i <- 1 to 3) {
       if(majorDestination) {
         if (distance(array(0) + 3, array(i)) == 0 && found) {
-          println("dr " + i + array(i))
+          //nic
         }
         if (distance(array(0) + 3, array(i)) == 0 && !found) {
-          println("pier" + i + array(i))
           array(i) = array(i) + distance(array(i), array(0))
           found = true
         }
       }
       else {
         if (distance(array(0) + 4, array(i)) == 0 && found) {
-          println("dr " + i + array(i))
+            //nic
         }
         if (distance(array(0) + 4, array(i)) == 0 && !found) {
-          println("pier" + i + array(i))
-          array(i) = array(i) + distance(array(i), array(0))
-
+          val test = distance(array(i), array(0))
+          array(i) = array(i) + test
           found = true
         }
       }
@@ -99,8 +95,6 @@ object ChordBuilder3 {
     if(majorDestination) array(0) -= 4
     else array(0) -= 3
 
-    println("POOOOOOOOOOOOOO")
-    printTab(array,4)
     array
   }
 

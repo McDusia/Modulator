@@ -25,7 +25,7 @@ object Modulator{
     kind match {
       case ModulationType.First => {
         println("first")
-        sq = ChordBuilder1.buildSequenceForFirstType(LetterToSound.isMajor(source), LetterToSound.isMajor(destination),sNr,dNr)
+        sq = ChordBuilder1.buildSequence(LetterToSound.isMajor(source), LetterToSound.isMajor(destination),sNr,dNr)
       }
       case ModulationType.Second => {
         println("second")
