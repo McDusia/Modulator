@@ -68,32 +68,26 @@ object ChordBuilder3 {
 
     array
   }
-
+//nie wiem czy to ok???
   /*def fifthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
-    val indexes = findIndexes(majorDestination,array,Array(0,10,4,7),Array(0,10,4,7))
+    val indexes = findIndexes(majorDestination,array,Array(0,3,-1,-1),Array(0,4,-1,-1))
     var map = Map(indexes(0)->0)
     if(majorDestination)
-      map = Map(indexes(0) -> 2, indexes(1) -> -1,indexes(2) -> 1,indexes(3) -> -2)
+      map = Map(indexes(0) -> 2, indexes(1) -> -1,indexes(2) -> 0,indexes(3) -> 0)
     else
-      map = Map(indexes(0) -> 1, indexes(1) -> -2,indexes(2) -> 1,indexes(3) -> -2)
+      map = Map(indexes(0) -> 1, indexes(1) -> -2,indexes(2) -> 0,indexes(3) -> 0)
 
     moveNotes(array,map)
   }*/
 
   def fifthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
-    println("in PIATY AKORD&&&&&&&&&&&&&&&&&&&&")
-    printTab(array,4)
-
     var found = false
-
     for (i <- 1 to 3) {
       if(majorDestination) {
         if (distance(array(0) + 3, array(i)) == 0 && found) {
           println("dr " + i + array(i))
-
         }
-        println("test " + distance(array(0) + 3, array(i)))
         if (distance(array(0) + 3, array(i)) == 0 && !found) {
           println("pier" + i + array(i))
           array(i) = array(i) + distance(array(i), array(0))
@@ -103,25 +97,31 @@ object ChordBuilder3 {
       else {
         if (distance(array(0) + 4, array(i)) == 0 && found) {
           println("dr " + i + array(i))
-
         }
-        println("test " + distance(array(0) + 4, array(i)))
         if (distance(array(0) + 4, array(i)) == 0 && !found) {
           println("pier" + i + array(i))
           array(i) = array(i) + distance(array(i), array(0))
           found = true
         }
       }
-
     }
     if(majorDestination) array(0) -= 4
     else array(0) -= 3
-    println("poz mainachu PIATY%%%%%%%%%%%%%%%%%%")
-    printTab(array,4)
+
     array
   }
 
+  //tu cos zle
+  /*def sixthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
+    val index = findIndex(majorDestination,array,11,10)
+    var map = Map(index->0)
+    if(majorDestination)
+      map = Map(0-> 1, index->0,index-> 0,index -> -2)
+    else
+      map = Map(0-> 1, index -> -1,index-> 0,index-> -1)
 
+    moveNotes(array,map)
+  }*/
 
 
   def sixthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
@@ -141,6 +141,17 @@ object ChordBuilder3 {
     array(0) += 1
     array
   }
+
+  /*def seventhChord3Type(majorDestination: Boolean, array: Array[Int]) = {
+    val indexes = findIndexes(majorDestination,array,Array(0,3,8,0),Array(0,8,2,0))
+    var map = Map(indexes(0)->0)
+    if(majorDestination)
+      map = Map(indexes(0) -> 1, indexes(1) -> -2,indexes(2) -> 2,indexes(3) -> 0)
+    else
+      map = Map(indexes(0) -> 1, indexes(1) -> 1,indexes(2) -> -1,indexes(3) -> 0)
+
+    moveNotes(array,map)
+  }*/
 
   def seventhChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
@@ -206,7 +217,7 @@ object ChordBuilder3 {
     array
   }
   //do sprawdzenia
-  /*def ninthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
+  def ninthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
   val indexes = findIndexes(majorDestination,array,Array(0,4,10,2),Array(0,4,10,1))
   var map = Map(indexes(0)->0)
   if(majorDestination)
@@ -215,9 +226,9 @@ object ChordBuilder3 {
     map = Map(indexes(0) -> -7, indexes(1) -> 1,indexes(2) -> -2,indexes(3) -> -1)
 
   moveNotes(array,map)
-}*/
+}
 
-  def ninthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
+  /*def ninthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
     for (i <- 1 to 3) {
       if (distance(array(0) + 4, array(i)) == 0) {
@@ -245,7 +256,7 @@ object ChordBuilder3 {
     println("poz mainachu%%%%%%%%%%%%%%%%%%")
     printTab(array,4)
     array
-  }
+  }*/
 
   def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)

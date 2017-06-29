@@ -151,6 +151,10 @@ object ChordBuilder {
     for((a,b) <- Array(0,1,2,3) zip old) yield(b + toAdd.getOrElse(a,-1))
   }
 
+  //def moveNote(old: Array[Int], toAdd: Map[Int,Int]) = {
+  //
+  //}
+
   def findIndexes(majorDestination: Boolean, array: Array[Int], findIfMajor: Array[Int], findIfMinor: Array[Int]) = {
     var indexes = new Array [Int] (4)
     val withoutBass = new Array [Int] (3)
@@ -167,6 +171,22 @@ object ChordBuilder {
     indexes(0) = -1
     indexes.map(e=> (e+1))
   }
+
+  def findIndex(majorDestination: Boolean, array: Array[Int], findIfMajor: Int, findIfMinor: Int) = {
+    var index = -1
+    val withoutBass = new Array [Int] (3)
+    for(i <- 0 to 2) withoutBass(i) = array(i+1)
+
+    if(majorDestination) {
+        index = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMajor,_)==0)).getOrElse(-1))
+    }
+    else {
+        index = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMinor,_)==0)).getOrElse(-1))
+    }
+    index += 1
+    index
+  }
+
 
   def printTab(array: Array[Int], size: Int) = {
     println("------------------")
