@@ -2,12 +2,7 @@ package modulator
 
 import Type._
 object DefineModulationType {
-  /*sealed abstract class ModulationType
 
-  class firstType(source:Int,destination:Int) extends ModulationType
-  class secondType(source:Int,destination:Int) extends ModulationType
-  class thirdType(source:Int,destination:Int) extends ModulationType
-  */
   private var secondType = false
   private var thirdType = false
   private var firstType = false
@@ -15,7 +10,7 @@ object DefineModulationType {
   def abs(x: Int): Int = { if (x >= 0) x else -x }
 
   private def setTypeVariables(source:Int,destination:Int) = {
-    //odleglosc tonacji jest wielokrotnoscia 3
+    //odleglosc tonacji jest wielokrotnoscia 3 półtonów
     firstType = ((source-destination) % 3 == 0)
     //budujemy akord od 7 stopnia
     val seventhPitch = source + 11

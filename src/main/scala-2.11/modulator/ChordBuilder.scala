@@ -14,6 +14,22 @@ object ChordBuilder {
       //NoteOff(0,c,0),NoteOff(0,d,0)
     )
   }
+  def buildVector1(a: Int) = {
+    Vector(
+      NoteOn(0,a,127),
+      NoteOff(0,a,0)//,NoteOff(0,b,0),
+      //NoteOff(0,c,0),NoteOff(0,d,0)
+    )
+  }
+
+  def buildVector(array: Array[Int])= {
+    Vector(
+      NoteOn(0,array(0),127),NoteOn(1,array(1),127),
+      NoteOn(2,array(2),127), NoteOn(3,array(3),127),
+
+      NoteOff(0,array(0),0)
+    )
+  }
 
   def tonic(major: Boolean, keynote: Int) = {
     val array = new Array[Int](4)
@@ -26,23 +42,6 @@ object ChordBuilder {
 
   def abs(x: Int) : Int = { if (x >= 0) x else -x }
 
-  //def distanceForInt(x: Int, y: Int) = abs(x - y)
-
-  //-----dostaje 3 odleglosci i zwraca najkrótszą jesli istnieje,
-  // lub tablice, jeśli jest kilka tak samo małych
-  def minJumps(x: Int, y: Int, z: Int): Array[Int] = {
-    val a = abs(x)
-    val b = abs(y)
-    val c = abs(z)
-
-    if (a < b && a < c) Array(x)
-    else if (b < a && b < c) Array(y)
-    else if ((a == b) && (b < c)) Array(x,y)
-    else if ((b == c) && (c < a)) Array(y,z)
-    else if ((a == c) && (c < b)) Array(x,z)
-    else Array(z)
-
-  }
 
   def distance(x: Int, y: Int) = {
     val a = (y - x)%12
@@ -102,7 +101,7 @@ object ChordBuilder {
     val tab = new Array [Int](4)
 
     //obliczenie dźwięków z drugiego akordu
-    for(i <- 0 to 3) {tab(i) = seventhPitch + 3 * i; println("tab(i): " + tab(i)) }
+    for(i <- 0 to 3) {tab(i) = seventhPitch + 3 * i }
 
     var index = 0
     //znajdz wśród nich dźwiek z tonacji docelowej
@@ -157,8 +156,8 @@ object ChordBuilder {
 
   def findIndexes(majorDestination: Boolean, array: Array[Int], findIfMajor: Array[Int], findIfMinor: Array[Int]) = {
     var indexes = new Array [Int] (4)
-    val withoutBass = new Array [Int] (3)
-    for(i <- 0 to 2) withoutBass(i) = array(i+1)
+
+    val withoutBass = array.tail
 
     if(majorDestination) {
       for(i <- 1 to 3)

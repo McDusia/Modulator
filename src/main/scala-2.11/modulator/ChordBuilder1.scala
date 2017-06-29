@@ -3,14 +3,13 @@ package modulator
 import modulator.ChordBuilder._
 import modulator.Type.ModulationType
 
-/**
-  * Created by Madzia on 28.06.2017.
-  */
+
 object ChordBuilder1 {
+  //kadencja utrwalająca w tonacji docelowej
   def cadenceChord1(majorDestination: Boolean, array: Array[Int], destination: Int) = {
     //nowa pryma akordu
-    array(0) = array(0) + distance(array(0),destination+5)
-    println("nowa pryma: "+ array(0))
+    array(0) += distance(array(0),destination+5)
+
     //znalezienie 2 tercji akordu, 2 dźwięki takie same
     var third1 = array(0)
     var third2 = array(0)
@@ -38,9 +37,7 @@ object ChordBuilder1 {
       index2 = 3
       fifthIndex = 1
     }
-    println("znaleziona tercja: " + third1)
-    println("druga tercja: " + third2)
-    println("kwinta: " + array(fifthIndex))
+
     //taka oktawa zeby skok od array(index1) był najmniejszy
     array(index1) = array(index1) + distance(array(index1),array(0) + 3)
     if(majorDestination)
@@ -50,88 +47,40 @@ object ChordBuilder1 {
     array
   }
 
-  def cadenceChord2(majorDestination: Boolean,array: Array[Int]) = {
+  def cadenceChord2(majorDestination: Boolean, array: Array[Int]) = {
+    val indexes = findIndexes(majorDestination,array,Array(0,7,3,9),Array(0,7,3,9))
+    var map = Map(indexes(0)->0)
+    var a = 0
+    if(majorDestination) a = 2 else a = 1
+    map = Map(indexes(0) -> 2, indexes(1) -> 0,indexes(2) -> -1,indexes(3) -> a)
 
-    for(i<-1 to 3)
-    {
-      if(distance(array(0)+7, array(i))==0) {
-        //nic
-      }
-
-      if(distance(array(0)+3, array(i))==0) {
-        array(i) -= 1
-      }
-      if(distance(array(0)+9, array(i))==0) {
-        if(majorDestination) array(i) += 2
-        else array(i) += 1
-      }
-    }
-    array(0) += 2
-    array
+    moveNotes(array,map)
   }
 
-  def cadenceChord3(majorDestination: Boolean,array: Array[Int]) = {
+  def cadenceChord3(majorDestination: Boolean, array: Array[Int]) = {
+    val indexes = findIndexes(majorDestination,array,Array(0,0,9,5),Array(0,0,8,5))
+    var map = Map(indexes(0)->0)
+    var a = 0
+    if(majorDestination) a = -2 else a = -1
+      map = Map(indexes(0) -> -1, indexes(1) -> 2,indexes(2) -> a,indexes(3) -> 0)
 
-    for(i<-1 to 3)
-    {
-      if(distance(array(0), array(i))==0) {
-        array(i) += 2
-      }
-      if(majorDestination) {
-        if (distance(array(0) + 9, array(i)) == 0) {
-          array(i) -= 2
-        }
-      }
-      else {
-        if (distance(array(0) + 8, array(i)) == 0) {
-          array(i) -= 1
-        }
-      }
-
-      if(distance(array(0) + 5, array(i))==0) {
-        //nic
-      }
-    }
-    array(0) -= 1
-
-    array
+    moveNotes(array,map)
   }
 
-  def cadenceChord4(majorDestination: Boolean,array: Array[Int]) = {
+  def cadenceChord4(majorDestination: Boolean, array: Array[Int]) = {
+    val indexes = findIndexes(majorDestination,array,Array(0,6,3,8),Array(0,6,3,8))
+    val map = Map(indexes(0) -> 1, indexes(1) -> -1,indexes(2) -> -4,indexes(3) -> 0)
 
-    for(i<-1 to 3)
-    {
-      if (distance(array(0) + 6, array(i)) == 0) {
-        array(i) -= 1
-      }
-
-      if (distance(array(0) + 3, array(i)) == 0) {
-        array(i) -= 4
-      }
-      if(distance(array(0) + 8, array(i))==0) {
-        //nic
-      }
-    }
-    array(0) += 1
-    array
+    moveNotes(array,map)
   }
 
-  def cadenceChord5(majorDestination: Boolean,array: Array[Int]) = {
-
-    for (i <- 1 to 3) {
-      if (distance(array(0) + 7, array(i)) == 0) {
-        array(i) -= 2
-      }
-      if (distance(array(0) + 10, array(i)) == 0) {
-        if(majorDestination) array(i) -= 1
-        else array(i) -= 2
-      }
-      if (distance(array(0) + 4, array(i)) == 0) {
-        array(i) +=1
-      }
-    }
-    array(0) -= 7
-    array
+  def cadenceChord5(majorDestination: Boolean, array: Array[Int]) = {
+    val indexes = findIndexes(majorDestination,array,Array(0,7,10,4),Array(0,7,10,4))
+    var map = Map(indexes(0)->0)
+    var a = 0
+    if(majorDestination) a = -1 else a = -2
+    map = Map(indexes(0) -> -7, indexes(1) -> -2,indexes(2) -> a,indexes(3) -> 1)
+    moveNotes(array,map)
   }
 
   //funkcja przyjmuje czy tonacja docelowa jest durowa i 1 akord modulacji
@@ -144,16 +93,12 @@ object ChordBuilder1 {
     else {result(0) = tab(0) + 1 }
 
     val third = tab(0) + 4
-    printf("tercja: "+ third)
     val fifth = tab(0) + 7
-    println("kwinta: "+ fifth)
     val seventh = tab(0) + 10
-    println("septyma" + seventh)
 
     for(i <- 1 to 3){
       if(abs(tab(i)-third) %12 == 0) {
         result(i) = tab(i) + 1
-        val index = i
       }
       if(abs(tab(i) - fifth) %12 == 0) {
         result(i) = tab(i) - 2
@@ -163,50 +108,31 @@ object ChordBuilder1 {
         else result(i) = tab(i) - 2
       }
     }
-
     result
   }
 
   def buildSequenceForFirstType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
-    val boxForFirstChord = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    val box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    val box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
+    var result = buildVector(boxForTonic) ++ buildVector(box1) ++ buildVector(box2)
+    val box3 = modulationChord2(majorDestination,box1)
+    result ++= buildVector(box3)
+    val box4 = cadenceChord1(majorDestination,box3,destination)
+    result ++= buildVector(box4)
+    val box4a = box4.map(e => if (box4.indexOf(e) == 0) e+1 else e)
+    result ++= buildVector(box4a)
+    val box5 = cadenceChord2(majorDestination,box4)
+    result ++= buildVector(box5)
+    val box6 = cadenceChord3(majorDestination,box5)
+    result ++= buildVector(box6)
+    val box7 = cadenceChord4(majorDestination,box6)
+    result ++= buildVector(box7) ++ buildVector( cadenceChord5(majorDestination,box7))
 
-    //przepisanie akordu do nowej tablicy
-    val tmp = new Array [Int] (4)
-    val temp = new Array [Int] (4)
-    val tmp2 = new Array [Int] (4)
-    val tmp3 = new Array [Int] (4)
-    val tmp4 = new Array [Int] (4)
-    val tmp5 = new Array [Int] (4)
-    for(i <- 0 to 3) tmp(i) = boxForFirstChord(i)
-
-    val array3 = modulationChord2(majorDestination,tmp)
-    //4 akord
-    for(i <- 0 to 3) temp(i) = array3(i)
-    val array4 = cadenceChord1(majorDestination,temp,destination)
-    for(i <- 0 to 3) tmp2(i) = array4(i)
-    val array5 = cadenceChord2(majorDestination,tmp2)
-
-    for(i <- 0 to 3) tmp3(i) = array5(i)
-    val array6 = cadenceChord3(majorDestination,tmp3)
-
-    for(i <- 0 to 3) tmp4(i) = array6(i)
-    val array7 = cadenceChord4(majorDestination,tmp4)
-
-    for(i <- 0 to 3) tmp5(i) = array7(i)
-    val array8 = cadenceChord5(majorDestination,tmp5)
-
-
-    buildVector(boxForTonic(0),boxForTonic(1),boxForTonic(2),boxForTonic(3)) ++
-      buildVector(boxForFirstChord(0),boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
-      buildVector(boxForFirstChord(0)-1,boxForFirstChord(1),boxForFirstChord(2),boxForFirstChord(3)) ++
-      buildVector(array3(0),array3(1),array3(2),array3(3)) ++
-      buildVector(array4(0),array4(1),array4(2),array4(3)) ++
-      buildVector(array4(0)+1,array4(1),array4(2),array4(3)) ++
-      buildVector(array5(0),array5(1),array5(2),array5(3)) ++
-      buildVector(array6(0),array6(1),array6(2),array6(3)) ++
-      buildVector(array7(0),array7(1),array7(2),array7(3)) ++
-      buildVector(array8(0),array8(1),array8(2),array8(3))
+    result
   }
+
+
+
 
 }

@@ -3,12 +3,9 @@ package modulator
 import modulator.ChordBuilder._
 import modulator.Type.ModulationType
 
-/**
-  * Created by Madzia on 28.06.2017.
-  */
+
 object ChordBuilder2 {
 
-  //-----------------drugi typ
   def thirdChord2type(majorDestination: Boolean, array: Array[Int]) = {
     val indexes = findIndexes(majorDestination,array,Array(0,9,6,3),Array(0,9,6,3))
     var map = Map(indexes(0)->0)
@@ -43,7 +40,7 @@ object ChordBuilder2 {
   }
 
 
-  def buildSequenceForSecondType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
+  /*def buildSequenceForSecondType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
     val boxForFirstChord = modulationChord1(ModulationType.Second, source,destination,boxForTonic)
 
@@ -68,7 +65,21 @@ object ChordBuilder2 {
       buildVector(array3(0),array3(1),array3(2),array3(3)) ++
       buildVector(array4(0),array4(1),array4(2),array4(3)) ++
       buildVector(array5(0),array5(1),array5(2),array5(3))
-  }
+  }*/
 
+  def buildSequenceForSecondType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
+
+    val boxForTonic = tonic(major,source)
+    val box1 = modulationChord1(ModulationType.Second, source,destination,boxForTonic)
+    //musi znalezc od 6 od destination wsród 4 dźwieków z define modula
+    //pozostałe połączyć najkrótszą drogą  <- 1 akord po tonice
+    var result = buildVector(boxForTonic) ++ buildVector(box1)
+    val box2 = thirdChord2type(majorDestination,box1)
+    result ++= buildVector(box2)
+    val box3 = fourthChord2Type(majorDestination,box2)
+    result ++= buildVector(box3) ++ buildVector(fifthChord2Type(majorDestination,box3))
+
+    result
+  }
 
 }

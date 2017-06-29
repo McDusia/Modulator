@@ -38,7 +38,9 @@ object Modulator{
     }
 
     val c1 = sq.zipWithIndex.map{case (m,i) => Event((i*0.5*rate.value).toLong, m) }
+    val test = sq.zipWithIndex.map{case (m,i) => Event((i*1.5*rate.value).toLong, m) }
     val c2 = Track(c1)
+    val test2 = Track(test)
     val c3 = Sequence(Vector(c2))
     c3.write(path)
 

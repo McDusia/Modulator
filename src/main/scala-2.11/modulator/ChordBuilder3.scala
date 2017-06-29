@@ -3,9 +3,7 @@ package modulator
 import modulator.ChordBuilder._
 import modulator.Type.ModulationType
 
-/**
-  * Created by Madzia on 28.06.2017.
-  */
+
 object ChordBuilder3 {
 
   //do sprawdzenia
@@ -45,26 +43,16 @@ object ChordBuilder3 {
 
   def thirdChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
-    var index1 = -1
-    var index2 = -1
+    val index1 = array.indexOf(array.find((distance(array(0)+3,_)==0)).getOrElse(-1))
+    val index2 = array.indexOf(array.find((distance(array(0)+9,_)==0)).getOrElse(-1))
 
-    //index1 = array.indexOf(array.find((distance(array(0)+3,_)==0)).getOrElse(-1))
-    //index2 = array.indexOf(array.find((distance(array(0)+9,_)==0)).getOrElse(-1))
-    for (i <- 1 to 3) {
-
-      if(distance(array(0)+3, array(i))==0)
-        index1 = i
-      if(distance(array(0)+9, array(i))==0)
-        index2 = i
-
-    }
     if(index1 < index2)
       array(index2) -= 12
 
     for (i <- 1 to 3)
       array(i) += 1
     //array(0) -= 1
-    //array.map(e=> (e+1))
+    //array.map(e=> if(array.indexOf(e)>0)(e+1) else e)
 
     array
   }
@@ -82,6 +70,8 @@ object ChordBuilder3 {
 
   def fifthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
+    println("PRZEDDDDDDDDDDDDDDDDDDD")
+    printTab(array,4)
     var found = false
     for (i <- 1 to 3) {
       if(majorDestination) {
@@ -101,6 +91,7 @@ object ChordBuilder3 {
         if (distance(array(0) + 4, array(i)) == 0 && !found) {
           println("pier" + i + array(i))
           array(i) = array(i) + distance(array(i), array(0))
+
           found = true
         }
       }
@@ -108,6 +99,8 @@ object ChordBuilder3 {
     if(majorDestination) array(0) -= 4
     else array(0) -= 3
 
+    println("POOOOOOOOOOOOOO")
+    printTab(array,4)
     array
   }
 
@@ -258,7 +251,7 @@ object ChordBuilder3 {
     array
   }*/
 
-  def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
+  /*def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
     val boxForFirstChord = modulationChord1(ModulationType.Third, source,destination,boxForTonic)
 
@@ -306,5 +299,31 @@ object ChordBuilder3 {
       buildVector(array8(0),array8(1),array8(2),array8(3)) ++
       buildVector(array9(0),array9(1),array9(2),array9(3))
 
+  }*/
+  def buildSequenceForThirdType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
+    val boxForTonic = tonic(major,source)
+    val box1 = modulationChord1(ModulationType.Third, source,destination,boxForTonic)
+    var result = buildVector(boxForTonic) ++ buildVector(box1)
+
+    //musi znalezc od 6 od destination wsrdo 4 dzwiekow z define modula
+    //pozostale polaczyc najkrotsza droga  <- 1 akord po tonice
+
+    val box2 = thirdChord3Type(majorDestination,box1)
+    result ++= buildVector(box2)
+    val box3 = czwartyakord3typ(majorDestination,box2)
+    result ++= buildVector(box3)
+    val box4 = fifthChord3Type(majorDestination,box3)
+    result ++= buildVector(box4)
+    val box5 = sixthChord3Type(majorDestination,box4)
+    result ++= buildVector(box5)
+    val box6 = seventhChord3Type(majorDestination,box5)
+    result ++= buildVector(box6)
+    val box7 = eightChord3Type(majorDestination,box6)
+    result ++= buildVector(box7) ++ buildVector(ninthChord3Type(majorDestination,box7))
+
+    result
+
   }
+
+
 }
