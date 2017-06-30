@@ -97,7 +97,6 @@ object ChordBuilder {
     val dominantsPrime = destination + 7
 
     //zbuduj 4 dźwięki od 7 stopnia tonacji wyjściowej
-    println("ninth " + ninthPith)
     val tab = new Array [Int](4)
 
     //obliczenie dźwięków z drugiego akordu
@@ -147,25 +146,21 @@ object ChordBuilder {
   }
 
   def moveNotes(old: Array[Int], toAdd: Map[Int,Int]) = {
-    for((a,b) <- Array(0,1,2,3) zip old) yield(b + toAdd.getOrElse(a,-1))
+    for((a,b) <- Array(0,1,2,3) zip old) yield(b + toAdd.getOrElse(a,0))
   }
 
-  //def moveNote(old: Array[Int], toAdd: Map[Int,Int]) = {
-  //
-  //}
 
   def findIndexes(majorDestination: Boolean, array: Array[Int], findIfMajor: Array[Int], findIfMinor: Array[Int]) = {
-    var indexes = new Array [Int] (4)
-
+    val indexes = new Array [Int] (4)
     val withoutBass = array.tail
 
     if(majorDestination) {
       for(i <- 1 to 3)
-        indexes(i) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMajor(i),_)==0)).getOrElse(-1))
+        indexes(i) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMajor(i),_)==0)).getOrElse(0))
     }
     else {
       for(i <- 1 to 3)
-        indexes(i) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMinor(i),_)==0)).getOrElse(-1))
+        indexes(i) = withoutBass.indexOf(withoutBass.find((distance(array(0)+findIfMinor(i),_)==0)).getOrElse(0))
     }
     indexes(0) = -1
     indexes.map(e=> (e+1))

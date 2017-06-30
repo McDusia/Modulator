@@ -1,13 +1,12 @@
 package modulator
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message
-import de.sciss.midi.{NoteOff, NoteOn}
 import modulator.ChordBuilder.{buildVector1, _}
 import modulator.Type.ModulationType
 
 
 object ChordBuilder1 {
   //kadencja utrwalająca w tonacji docelowej
+
   def cadenceChord1(majorDestination: Boolean, array: Array[Int], destination: Int) = {
     //nowa pryma akordu
     array(0) += distance(array(0),destination+5)
@@ -116,8 +115,9 @@ object ChordBuilder1 {
   def buildSequenceForFirstType(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
     val box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    var result = buildVector(boxForTonic)++ buildVector(box1)
     val box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
-    var result = buildVector(boxForTonic) ++ buildVector(box1) ++ buildVector(box2)
+    result ++= buildVector(box2)
     val box3 = modulationChord2(majorDestination,box1)
     result ++= buildVector(box3)
     val box4 = cadenceChord1(majorDestination,box3,destination)
@@ -136,32 +136,45 @@ object ChordBuilder1 {
 
   def buildSequence(major: Boolean, majorDestination: Boolean, source: Int, destination: Int) = {
     val boxForTonic = tonic(major,source)
-    val box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
-    val box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
+    var box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    var box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
 
-    val i = 0
-    //var result = new Array[buildVector1(boxForTonic(i))](4)
+    val res0 = extractTrack(0,boxForTonic,box1,box2,majorDestination,destination)
+    box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
+    val res1 = extractTrack(1,boxForTonic,box1,box2,majorDestination,destination)
+    box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
 
-    for(i <- 0 to 3) {
+    val res2 = extractTrack(2,boxForTonic,box1,box2,majorDestination,destination)
+    box1 = modulationChord1(ModulationType.First,source,destination,boxForTonic)
+    box2 = box1.map(e => if (box1.indexOf(e) == 0) e-1 else e )
 
-      var result = buildVector1(boxForTonic(i)) ++ buildVector1(box1(i)) ++ buildVector1(box2(i))
-      val box3 = modulationChord2(majorDestination, box1)
-      result ++= buildVector1(box3(i))
-      val box4 = cadenceChord1(majorDestination, box3, destination)
-      result ++= buildVector1(box4(i))
-      val box4a = box4.map(e => if (box4.indexOf(e) == 0) e + 1 else e)
-      result ++= buildVector1(box4a(i))
-      val box5 = cadenceChord2(majorDestination, box4)
-      result ++= buildVector1(box5(i))
-      val box6 = cadenceChord3(majorDestination, box5)
-      result ++= buildVector1(box6(i))
-      val box7 = cadenceChord4(majorDestination, box6)
-      result ++= buildVector1(box7(i)) ++ buildVector1(cadenceChord5(majorDestination, box7)(i))
-    val wynik result
-    }
-    //result
+    val res3 = extractTrack(3,boxForTonic,box1,box2,majorDestination,destination)
+
+    Array(res0,res1,res2,res3)
+    (res0,res1,res2,res3)
   }
 
+
+  def extractTrack(trackNr: Int,boxForTonic:Array[Int], box1: Array[Int],box2:Array[Int],majorDestination: Boolean,destination: Int) = {
+
+    var result = buildVector1(boxForTonic(trackNr)) ++ buildVector1(box1(trackNr)) ++ buildVector1(box2(trackNr))
+    val box3 = modulationChord2(majorDestination, box1)
+    result ++= buildVector1(box3(trackNr))
+    val box4 = cadenceChord1(majorDestination, box3, destination)
+    result ++= buildVector1(box4(trackNr))
+    val box4a = box4.map(e => if (box4.indexOf(e) == 0) e + 1 else e)
+    result ++= buildVector1(box4a(trackNr))
+    val box5 = cadenceChord2(majorDestination, box4)
+    result ++= buildVector1(box5(trackNr))
+    val box6 = cadenceChord3(majorDestination, box5)
+    result ++= buildVector1(box6(trackNr))
+    val box7 = cadenceChord4(majorDestination, box6)
+    result ++= buildVector1(box7(trackNr)) ++ buildVector1(cadenceChord5(majorDestination, box7)(trackNr))
+
+    result
+  }
 
 
 }
