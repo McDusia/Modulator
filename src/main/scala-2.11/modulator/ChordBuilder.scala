@@ -10,15 +10,13 @@ object ChordBuilder {
       NoteOn(0,a,127),NoteOn(1,b,127),
       NoteOn(2,c,127), NoteOn(3,d,127),
 
-      NoteOff(0,a,0)//,NoteOff(0,b,0),
-      //NoteOff(0,c,0),NoteOff(0,d,0)
+      NoteOff(0,a,0)
     )
   }
   def buildVector1(a: Int) = {
     Vector(
       NoteOn(0,a,127),
-      NoteOff(0,a,0)//,NoteOff(0,b,0),
-      //NoteOff(0,c,0),NoteOff(0,d,0)
+      NoteOff(0,a,0)
     )
   }
 
@@ -70,8 +68,6 @@ object ChordBuilder {
       dist1(i) = distance(restTonic(1),rest(i))
       dist2(i) = distance(restTonic(2),rest(i))
     }
-    //alternatywnie:
-    //dist0.map(e=>distance(restTonic(0),rest()))
 
     var min = 36
     var index1 = -1; var index2 = -1; var index3 = -1;

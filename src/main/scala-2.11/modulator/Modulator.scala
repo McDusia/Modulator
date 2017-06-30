@@ -20,7 +20,6 @@ object Modulator{
     println("source note number: " + sNr)
 
     val kind = DefineModulationType.defineType(sNr,dNr)
-    //Type.printType(kind)
 
     var sq = Vector(NoteOn(0,1,50), NoteOff(0,1,0))
     kind match {

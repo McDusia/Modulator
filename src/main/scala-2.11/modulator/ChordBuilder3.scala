@@ -7,12 +7,7 @@ import modulator.Type.ModulationType
 object ChordBuilder3 {
 
   def thirdChord(majorDestination: Boolean, array: Array[Int]) = {
-    //val index1 = array.indexOf(array.find((distance(array(0)+3,_)==0)).getOrElse(-1))
-    //val index2 =array.indexOf(array.find((distance(array(0)+9,_)==0)).getOrElse(-1))
-
-    //if(index1 < index2)  array(index2) -= 12
     array.map(e => if(array.indexOf(e)>0) e+1 else e)
-
   }
 
   def fourthChord(majorDestination: Boolean, array: Array[Int]) = {
@@ -35,15 +30,6 @@ object ChordBuilder3 {
   }
 
 
-
-/*def sixthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
-    val index = findIndex(majorDestination,array,11,10)
-    var a = -1
-    if(majorDestination) a = -2
-    var map = Map(0-> 1, index-> a,index-> 0,index -> 0)
-    moveNotes(array,map)
-  }*/
-
   def sixthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
     for (i <- 1 to 3) {
@@ -61,7 +47,6 @@ object ChordBuilder3 {
     array(0) += 1
     array
   }
-
 
 
   def seventhChord(majorDestination: Boolean, array: Array[Int]) = {
@@ -96,33 +81,6 @@ object ChordBuilder3 {
     if(res(0)<36) res(0) += 12
     res
 }
-
-
-
-  /*def sixthChord3Type(majorDestination: Boolean, array: Array[Int]) = {
-    val index = findIndex(majorDestination,array,11,10)
-    var map = Map(index->0)
-    if(majorDestination)
-      map = Map(0-> 1, index->0,index-> 0,index -> -2)
-    else
-      map = Map(0-> 1, index -> -1,index-> 0,index-> -1)
-
-    moveNotes(array,map)
-  }*/
-
-
-
-
-  /*def seventhChord3Type(majorDestination: Boolean, array: Array[Int]) = {
-    val indexes = findIndexes(majorDestination,array,Array(0,3,8,0),Array(0,8,2,0))
-    var map = Map(indexes(0)->0)
-    if(majorDestination)
-      map = Map(indexes(0) -> 1, indexes(1) -> -2,indexes(2) -> 2,indexes(3) -> 0)
-    else
-      map = Map(indexes(0) -> 1, indexes(1) -> 1,indexes(2) -> -1,indexes(3) -> 0)
-
-    moveNotes(array,map)
-  }*/
 
   def seventhChord3Type(majorDestination: Boolean, array: Array[Int]) = {
 
